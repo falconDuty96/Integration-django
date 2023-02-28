@@ -124,7 +124,7 @@ def send_pass(request):
 @csrf_exempt
 def particular_auth(request):
     #   Retourne la page de connexion pour les particuliers
-    return render(request,'auth/particular/login.html')
+    return render(request,'auth/login_utilisateur.html')
 
 def particular_login(request):
     #   Retourne la page l'accueil avec l'utilisateur connecté s'il existe
@@ -228,7 +228,7 @@ def get_particular_profile(request,id):
 
 def professional_auth(request):
     # Retourne la page de connexion pour les professionnels
-    return render(request,'auth/professional/login.html')
+    return render(request,'auth/login.html')
 
 def professional_login(request):
     #   Retourne l'utilisateur en mode connecté sur  le dashboard professionnel
