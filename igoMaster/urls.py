@@ -39,7 +39,7 @@ urlpatterns=[
     ###    Connexions et Authentifications 
     ###    I- Côté particulier.
     path('auth/p/connexion',views.particular_auth,name='particular_login'),
-    path('auth/p/login',views.particular_login,name='p_login'),
+    path('login/particular',views.particular_login,name='p_login'),
     path('auth/p/new',views.new_particular,name='new_particular'),
     path('auth/p/register',views.particular_register,name='particular_register'),
     path('pass/reset',views.pass_reset),

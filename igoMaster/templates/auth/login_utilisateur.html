@@ -24,7 +24,7 @@
 
     <section class="login-clean">
         
-        <form method="post" action="{% url 'p_login'%}">
+        <form method="post" action="/login/particular">
             {% csrf_token %}
             <a href="/" class="arrow-modif"><i class="fa-solid fa-arrow-left"></i></a>
             <!-- <h2 class="sr-only">Login Form</h2> -->
@@ -32,13 +32,26 @@
                 <img src="{% static 'image/logo-pour-fond-blanc.png'%}" style="width: 100px;" alt="">
             </div>
             <!-- <div class="illustration"><i class="fa-solid fa-user-lock"></i></div> -->
-            <div class="form-group"><input class="border rounded-0 form-control" type="email" name="Email" placeholder="E-mail"></div>
+            <div class="form-group"><input class="border rounded-0 form-control" type="email" name="email" placeholder="E-mail"></div>
             <div class="form-group"><input class="border rounded form-control" type="password" name="password" placeholder="Mot de passe"></div>
             <div class="form-group"><button class="btn btn-warning btn-block" type="submit">Se connecter</button></div>
             <hr>
             <div class="form-group">
 				<a class="btn btn-success btn-block" href="/auth/p/new">S'inscrire</a>
 			</div><a class="forgot" href="forgot_password.html">Mot de passe oublié ?</a>
+            {% if msg %}
+            {% if "SUCCES" in msg %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle me-1"></i>{{msg}}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+            {% else %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-octagon me-1"></i>{{msg}}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+            {% endif %}
+            {% endif %}
         </form>
     </section>
     

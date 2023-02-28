@@ -132,12 +132,13 @@ def particular_login(request):
 
     email=request.POST.get('email')
     paswd=request.POST.get('password')
-
     try:
         #Essayer de recuperer l' user avec l'Email==email!
         u=User.objects.get(Email__exact=email,Type__id=2)
         if u!=None:
             #Alors on vérifie le pass
+            
+
             if u.Pass==paswd:
                 user={
                     'id':u.id,
@@ -152,11 +153,11 @@ def particular_login(request):
                 return redirect('Home')#render(request,'accueil.html',{'client':user})
             else:
                 msg='mot de passe invalide!'
-                return render(request,'auth/particular/login.html',{'msg':msg})
+                return render(request,'auth/login_utilisateur.html',{'msg':msg})
     except Exception as e:
         print('ERREUR',e)
         msg='E-mail invalide!'
-        return render(request,'auth/particular/login.html',{'msg':msg})
+        return render(request,'auth/login_utilisateur.html',{'msg':msg})
 
 def p_logout(request):
     # Deconnecte le particulier
@@ -174,11 +175,11 @@ def particular_register(request):
     
     if request.POST.get('pass')!=request.POST.get('pass_confirm'):
         msg='Les champs de mot de passe doivent être identique!'
-        return render(request,'auth/particular/register.html',{'msg':msg})
+        return render(request,'auth/inscription_utilisateur.html',{'msg':msg})
     try:
         if User.objects.get(Email=request.POST.get('email')):
             msg='Cet e-mail est déjà utilisé.'
-            return render(request,'auth/particular/register.html',{'msg':msg})
+            return render(request,'auth/inscription_utilisateur.html',{'msg':msg})
     except:
         pass
     msg=None
@@ -193,10 +194,10 @@ def particular_register(request):
             # Photo=request.FILES.get('photo')
         )
         msg='Compte Créé avec succes! Authentifiez vous.'
-        return render(request,'auth/particular/login.html')
+        return render(request,'auth/login_utilisateur.html')
     else:
         msg='Formulaire invalide!'
-        return render(request,'auth/particular/register.html',{'msg':msg})
+        return render(request,'auth/inscription_utilisateur.html',{'msg':msg})
 
 def get_particular_profile(request,id):
     if request.method=='GET':
