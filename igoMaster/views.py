@@ -166,7 +166,7 @@ def p_logout(request):
 
 def new_particular(request):
     #   Retourne la page de REGISTER des particuliers
-    return render(request,'auth/particular/register.html')
+    return render(request,'auth/inscription_utilisateur.html')
 
 def particular_register(request):
     # Renvoie l'utilisateur en mode connecté sur la page d'acceul apres l'avoir créé
@@ -266,7 +266,7 @@ def professional_login(request):
 
 def new_professional(request):
     #   Retourne la page de REGISTER des professionnels
-    return render(request,'auth/professional/register.html')
+    return render(request,'auth/inscription.html')
 
 def professional_register(request):
     #   Retourne l'utilisateur en mode connecté sur le dashboard professionnel
